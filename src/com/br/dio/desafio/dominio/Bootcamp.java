@@ -28,9 +28,23 @@ public class Bootcamp {
     public Set<Dev> getDevs() {
         return devsInscritos;
     }
+
     public Set<Conteudo> getCursosEmentorias() {
         return cursosEmentorias;
     }
+    
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public void setCursosEmentorias(Conteudo cursosEmentorias) {
+        this.cursosEmentorias.add(cursosEmentorias);
+    }
+    
     @Override
     public int hashCode() {
         final int prime = 31;

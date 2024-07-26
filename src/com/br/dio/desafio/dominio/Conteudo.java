@@ -11,7 +11,7 @@ public abstract class Conteudo {
         this.descricao = descricao;
     }
 
-    public abstract double calcularXp(int multiplicador);
+    public abstract double calcularXp();
 
     public static double getXpPadrao() {
         return XP_PADRAO;

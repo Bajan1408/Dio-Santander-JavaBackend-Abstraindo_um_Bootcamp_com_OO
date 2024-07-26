@@ -1,6 +1,7 @@
 package com.br.dio.desafio.dominio;
 
 import java.util.LinkedHashSet;
+import java.util.Optional;
 import java.util.Set;
 
 public class Dev {
@@ -9,15 +10,24 @@ public class Dev {
     private Set<Conteudo> cursosConcluidos = new LinkedHashSet<>();
 
     public void inscreverBootcamp(Bootcamp bootcamp) {
-
+        this.cursosInscritos.addAll(bootcamp.getCursosEmentorias());
+        bootcamp.getDevs().add(this);
     }
 
     public void progredir() {
-
+        Optional<Conteudo> atividade = this.cursosInscritos.stream()
+        .findFirst();
+        if(atividade.isPresent()) {
+            this.cursosConcluidos.add(atividade.get());
+            this.cursosInscritos.remove(atividade.get());
+        } else {
+            System.err.println("Você ainda não concluiu nenhum curso!");
+        }
+    
     }
 
-    public void calcularTotalXp() {
-
+    public double calcularTotalXp() {
+        return this.cursosConcluidos.stream().mapToDouble(conteudo -> conteudo.calcularXp()).sum();
     }
 
     public String getNome() {
@@ -31,6 +41,20 @@ public class Dev {
     public Set<Conteudo> getCursosConcluidos() {
         return cursosConcluidos;
     }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setCursosInscritos(Set<Conteudo> cursosInscritos) {
+        this.cursosInscritos = cursosInscritos;
+    }
+
+    public void setCursosConcluidos(Set<Conteudo> cursosConcluidos) {
+        this.cursosConcluidos = cursosConcluidos;
+    }
+
+    
 
     @Override
     public int hashCode() {

@@ -15,8 +15,8 @@ public class Mentoria extends Conteudo {
     }
 
     @Override
-    public double calcularXp(int qtdeMentorias) {
-        return XP_PADRAO * qtdeMentorias;
+    public double calcularXp() {
+        return XP_PADRAO;
     }
 
 

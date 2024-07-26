@@ -9,8 +9,8 @@ public class Curso extends Conteudo {
     }
 
     @Override
-    public double calcularXp(int qtdeCursos) {
-        return XP_PADRAO * qtdeCursos;
+    public double calcularXp() {
+        return XP_PADRAO;
     }
 
     @Override
